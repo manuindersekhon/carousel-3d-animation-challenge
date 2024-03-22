@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Semantics(
                   label: 'Image ${itemIndex + 1} of ${kImageUrls.length}',
                   hint: 'Swipe left or right to navigate between images',
-                  child: _imageContent(itemIndex),
+                  child: _simpleContent(itemIndex),
                 ),
               ),
             );
@@ -169,9 +169,11 @@ class _MyHomePageState extends State<MyHomePage> {
             offset: const Offset(0, 15),
           ),
         ],
-        image: DecorationImage(
-          image: NetworkImage(kImageUrls[itemIndex]),
-          fit: BoxFit.cover,
+        color: Colors.red,
+      ),
+      child: Center(
+        child: Text(
+          'Image ${itemIndex + 1}',
         ),
       ),
     );

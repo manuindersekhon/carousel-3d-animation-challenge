@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 ///
 /// Physics for [Carousel]. It guarantees to always land on a particular item after a free hand scroll.
+/// If is based on Flutter's own FixedExtentScrollPhysics with modifications to index calculation.
 ///
 class CarouselScrollPhysics extends ScrollPhysics {
   const CarouselScrollPhysics({super.parent});
