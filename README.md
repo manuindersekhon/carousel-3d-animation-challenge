@@ -7,10 +7,10 @@ You can provide any widget as a carousel item. Below examples show image and tex
 ## Demo
 
 Image widget example:
-[Image example](./demo/image_example.png)
+![Image example](./demo/image_example.png)
 
 Text widget example:
-[Text widget](./demo/text_example.png)
+![Text widget](./demo/text_example.png)
 
 ## Project setup
 
