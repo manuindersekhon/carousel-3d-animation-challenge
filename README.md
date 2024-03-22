@@ -2,11 +2,11 @@
 
 An infinite looping carousel with various 3D transformations, shadows and mirror effect. See demo below for more details.
 
-You can provide any widget as a carousel item. Below examples show image and text widgets as carousel items. `home_page.dart` has both methods `_simpleContent` and `_imageContent`, you can replace in code the one that you want to test in example app.
+You can provide any widget as a carousel item. Below examples show image and text widgets as carousel items.
 
 ## Demo
 
-> NOTE: Example app Carousel is currently best optimized for portrait / square aspect ratios. I'll update the example to adapt to larger screen sizes (or you can can run the app locally and test accordingly).
+> NOTE: Example app Carousel is currently best optimized for portrait / square aspect ratios. I'll update the example demo to adapt to larger screen sizes later (or you can can run the app locally and test accordingly).
 
 Demo link: https://carousel-challenge-5cbb5.web.app/
 
@@ -18,7 +18,7 @@ Text widget example:
 
 ## Project setup
 
-- **Prerequisites:** Flutter, Android / iOS / Web platform set up. See Flutter installation instructions to set up the platforms to run the application.
+- **Prerequisites:** Flutter (stable channel), Android / iOS / Web platform set up. See Flutter installation instructions to set up the platforms to run the application.
 
 - Clone the repository.
 
