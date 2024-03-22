@@ -56,3 +56,13 @@ Project is mainly divided into two parts:
 - `lib/carousel/scroll_metrics.dart`: You can listen to this class in `NotificationListener` to get the detailed snapshot of the current state of carousel. It may be useful if you want to do some side effect up the widget tree on carousel scroll.
 
 - `lib/home_page.dart`: This contains the implementation of 3D transformation and other effects on top of `Carousel` widget.
+
+## Auto rotation
+
+This is not built into the carousel but you can easily achieve it using below code:
+
+```dart
+final Timer _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    _scrollController.nextItem();
+});
+```
