@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Semantics(
                   label: 'Image ${itemIndex + 1} of ${kImageUrls.length}',
                   hint: 'Swipe left or right to navigate between images',
-                  child: _simpleContent(itemIndex),
+                  child: _imageContent(itemIndex),
                 ),
               ),
             );
