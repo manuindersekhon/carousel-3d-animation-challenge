@@ -92,54 +92,61 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (context, itemIndex, realIndex) {
             final double currentOffset = _itemExtent * realIndex;
 
-            return AnimatedBuilder(
-              animation: _scrollController,
-              builder: (context, child) {
-                final double offsetDiff = _scrollController.offset - currentOffset;
+            return IndexedSemantics(
+              index: itemIndex,
+              child: AnimatedBuilder(
+                animation: _scrollController,
+                builder: (context, child) {
+                  final double offsetDiff = _scrollController.offset - currentOffset;
 
-                // Angle and scale factor for perspective effect. Don't let it do below 0.001 to prevent distortion.
-                final double angle = -offsetDiff * math.min(0.001, 0.002);
+                  // Angle and scale factor for perspective effect. Don't let it do below 0.001 to prevent distortion.
+                  final double angle = -offsetDiff * math.min(0.001, 0.002);
 
-                // Increase the scale as the angle increases.
-                final double scaleFactor = math.max(0.75, math.sin(angle.abs()));
+                  // Increase the scale as the angle increases.
+                  final double scaleFactor = math.max(0.75, math.sin(angle.abs()));
 
-                // Slighlty rotate on Z axis to give a little more depth.
-                final double zAxisAngle = angle * 0.1;
+                  // Slighlty rotate on Z axis to give a little more depth.
+                  final double zAxisAngle = angle * 0.1;
 
-                return Column(
-                  children: [
-                    Expanded(
-                      flex: 5,
-                      child: Transform(
-                        alignment: FractionalOffset.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.004)
-                          ..rotateY(angle)
-                          ..rotateZ(zAxisAngle)
-                          ..scale(1.0, scaleFactor),
-                        child: child,
-                      ),
-                    ),
-                    // Create mirror reflection, but smaller than the actual item.
-                    Flexible(
-                      flex: 3,
-                      child: Transform(
-                        alignment: FractionalOffset.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.004)
-                          ..rotateY(angle)
-                          ..rotateZ(zAxisAngle)
-                          ..scale(1.0, -scaleFactor),
-                        child: Opacity(
-                          opacity: 0.2,
+                  return Column(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Transform(
+                          alignment: FractionalOffset.center,
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.004)
+                            ..rotateY(angle)
+                            ..rotateZ(zAxisAngle)
+                            ..scale(1.0, scaleFactor),
                           child: child,
                         ),
                       ),
-                    ),
-                  ],
-                );
-              },
-              child: _imageContent(itemIndex),
+                      // Create mirror reflection, but smaller than the actual item.
+                      Flexible(
+                        flex: 3,
+                        child: Transform(
+                          alignment: FractionalOffset.center,
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.004)
+                            ..rotateY(angle)
+                            ..rotateZ(zAxisAngle)
+                            ..scale(1.0, -scaleFactor),
+                          child: Opacity(
+                            opacity: 0.2,
+                            child: child,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+                child: Semantics(
+                  label: 'Image ${itemIndex + 1} of ${kImageUrls.length}',
+                  hint: 'Swipe left or right to navigate between images',
+                  child: _imageContent(itemIndex),
+                ),
+              ),
             );
           },
         ),
