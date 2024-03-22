@@ -41,6 +41,26 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Row(
+        children: [
+          const Spacer(),
+          FloatingActionButton(
+            heroTag: 'prev-item',
+            onPressed: () {
+              _scrollController.previousItem();
+            },
+            child: const Icon(Icons.arrow_back),
+          ),
+          const SizedBox(width: 10),
+          FloatingActionButton(
+            heroTag: 'next-item',
+            onPressed: () {
+              _scrollController.nextItem();
+            },
+            child: const Icon(Icons.arrow_forward),
+          ),
+        ],
+      ),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('Carousel Animation Challenge'),
@@ -119,25 +139,55 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 );
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: const Offset(0, 15),
-                    ),
-                  ],
-                  image: DecorationImage(
-                    image: NetworkImage(kImageUrls[itemIndex]),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              child: _imageContent(itemIndex),
             );
           },
+        ),
+      ),
+    );
+  }
+
+  ///
+  /// To demonstrate the simple text widget as carousel item.
+  ///
+  Widget _simpleContent(int itemIndex) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 15,
+            offset: const Offset(0, 15),
+          ),
+        ],
+        image: DecorationImage(
+          image: NetworkImage(kImageUrls[itemIndex]),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  ///
+  /// To demonstrate the image widget as carousel item.
+  ///
+  Widget _imageContent(int itemIndex) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 15,
+            offset: const Offset(0, 15),
+          ),
+        ],
+        image: DecorationImage(
+          image: NetworkImage(kImageUrls[itemIndex]),
+          fit: BoxFit.cover,
         ),
       ),
     );
