@@ -6,6 +6,10 @@ You can provide any widget as a carousel item. Below examples show image and tex
 
 ## Demo
 
+> NOTE: Example app Carousel is currently best optimized for portrait / square aspect ratios. I'll update the example to adapt to larger screen sizes (or you can can run the app locally and test accordingly).
+
+Demo link: https://carousel-challenge-5cbb5.web.app/
+
 Image widget example:
 ![Image example](./demo/image_example.png)
 
